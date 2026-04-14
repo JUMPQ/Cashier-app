@@ -232,11 +232,6 @@ export default function LoginScreen() {
                 </Text>
               )}
             </Pressable>
-
-            <Text style={[styles.helperText, { color: theme.muted }]}>
-              Tip: if you are testing on a device, make sure your API URL points
-              to your computer or LAN address, not only localhost.
-            </Text>
           </Animated.View>
         </ScrollView>
       </KeyboardAvoidingView>

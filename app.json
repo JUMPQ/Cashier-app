@@ -9,10 +9,13 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-  "bundleIdentifier": "com.jumpq.cashier",
-  "supportsTablet": true,
-  "buildNumber": "1"
-},
+      "bundleIdentifier": "com.jumpq.cashier",
+      "supportsTablet": true,
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
@@ -48,6 +51,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7b28e0c7-0ff4-4910-bfb4-e6677b84c355"
+      }
     }
   }
 }
