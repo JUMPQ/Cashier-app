@@ -17,6 +17,7 @@ export default function RootLayout() {
     <CashierSessionProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="_splash" />
           <Stack.Screen name="index" />
           <Stack.Screen name="login" />
           <Stack.Screen name="cashier" />

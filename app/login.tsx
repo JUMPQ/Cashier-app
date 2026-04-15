@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
+// import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
@@ -77,9 +77,22 @@ export default function LoginScreen() {
     }
   }, [hydrated, session]);
 
+  // Remove blue: use only dark and white colors
   const softTheme = useMemo(
-    () => createCashierPalette(theme.primary, theme.secondary, "light"),
-    [theme.primary, theme.secondary],
+    () => ({
+      ...theme,
+      primary: '#222',
+      primarySoft: '#393939',
+      secondary: '#111',
+      secondarySoft: '#222',
+      contrastOnPrimary: '#fff',
+      text: '#fff',
+      muted: '#ccc',
+      border: '#444',
+      surface: '#222',
+      background: '#111',
+    }),
+    [theme]
   );
 
   const handleSubmit = async () => {
@@ -137,12 +150,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <LinearGradient
-      colors={[softTheme.background, theme.primarySoft, theme.secondarySoft]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.container}
-    >
+    <View style={[styles.container, { backgroundColor: '#fff' }]}> 
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         style={styles.flex}
@@ -155,13 +163,13 @@ export default function LoginScreen() {
             entering={FadeInDown.duration(600)}
             style={styles.headerCard}
           >
-            <Text style={[styles.kicker, { color: theme.primary }]}>
+            <Text style={[styles.kicker, { color: '#222' }]}> 
               JumpQ cashier portal
             </Text>
-            <Text style={[styles.title, { color: theme.text }]}>
+            <Text style={[styles.title, { color: '#222' }]}> 
               Sign in to start verifying pickups.
             </Text>
-            <Text style={[styles.subtitle, { color: theme.muted }]}>
+            <Text style={[styles.subtitle, { color: '#393939' }]}> 
               Use the store code, your cashier username, and PIN to unlock the
               scanner dashboard.
             </Text>
@@ -214,18 +222,18 @@ export default function LoginScreen() {
               style={({ pressed }) => [
                 styles.primaryButton,
                 {
-                  backgroundColor: theme.primary,
+                  backgroundColor: '#222',
                   opacity: pressed || busy ? 0.9 : 1,
                 },
               ]}
             >
               {busy ? (
-                <ActivityIndicator color={theme.contrastOnPrimary} />
+                <ActivityIndicator color={'#fff'} />
               ) : (
                 <Text
                   style={[
                     styles.primaryButtonText,
-                    { color: theme.contrastOnPrimary },
+                    { color: '#fff' },
                   ]}
                 >
                   Log in
@@ -235,7 +243,7 @@ export default function LoginScreen() {
           </Animated.View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </LinearGradient>
+    </View>
   );
 }
 
@@ -255,9 +263,9 @@ const styles = StyleSheet.create({
   headerCard: {
     borderRadius: 28,
     padding: 24,
-    backgroundColor: "rgba(255,255,255,0.72)",
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.35)",
+    borderColor: '#393939',
     gap: 12,
   },
   kicker: {
@@ -278,9 +286,9 @@ const styles = StyleSheet.create({
   formCard: {
     borderRadius: 28,
     padding: 22,
-    backgroundColor: "rgba(255,255,255,0.85)",
+    backgroundColor: '#f5f5f5',
     borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.42)",
+    borderColor: '#393939',
     gap: 16,
   },
   fieldGroup: {

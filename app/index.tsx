@@ -63,36 +63,13 @@ export default function OnboardingScreen() {
   });
 
   return (
-    <LinearGradient
-      colors={[theme.primary, theme.secondary]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={[styles.container, { paddingTop: insets.top + 16 }]}
+    <View
+      style={[
+        styles.container,
+        { paddingTop: insets.top + 16, backgroundColor: '#222' },
+      ]}
     >
-      <Animated.View
-        pointerEvents="none"
-        style={[
-          styles.orb,
-          {
-            backgroundColor: theme.primarySoft,
-            top: 60,
-            right: -30,
-          },
-          bobStyle,
-        ]}
-      />
-      <Animated.View
-        pointerEvents="none"
-        style={[
-          styles.orb,
-          {
-            backgroundColor: theme.secondarySoft,
-            bottom: 50,
-            left: -40,
-          },
-          bobStyle,
-        ]}
-      />
+      {/* Decorative orbs removed for a cleaner, dark look */}
 
       <Animated.View
         entering={FadeInDown.duration(700)}
@@ -101,27 +78,21 @@ export default function OnboardingScreen() {
         <View
           style={[
             styles.badge,
-            { backgroundColor: theme.primarySoft, borderColor: theme.border },
+            { backgroundColor: '#393939', borderColor: '#444' },
           ]}
         >
-          <Text style={[styles.badgeText, { color: theme.contrastOnPrimary }]}>
-            Cashier mode
-          </Text>
+          <Text style={[styles.badgeText, { color: '#fff' }]}>Cashier mode</Text>
         </View>
 
-        <Text style={[styles.title, { color: theme.text }]}>
+        <Text style={[styles.title, { color: '#fff' }]}> 
           Scan, verify, and hand over with confidence.
         </Text>
-        <Text style={[styles.subtitle, { color: theme.muted }]}>
+        <Text style={[styles.subtitle, { color: '#ccc' }]}> 
           A focused cashier experience with QR scanning, pickup code lookup,
           item review, and a one-tap verified handoff.
         </Text>
 
-        <View style={styles.chipRow}>
-          <FeatureChip label="Animated UI" theme={theme} />
-          <FeatureChip label="Store branded" theme={theme} />
-          <FeatureChip label="Pickup aware" theme={theme} />
-        </View>
+        {/* Feature chips removed as requested */}
 
         <Animated.View
           entering={FadeInUp.delay(150).duration(700)}
@@ -132,18 +103,18 @@ export default function OnboardingScreen() {
             style={({ pressed }) => [
               styles.primaryButton,
               {
-                backgroundColor: theme.contrastOnPrimary,
+                backgroundColor: pressed ? '#393939' : '#111',
                 opacity: pressed ? 0.92 : 1,
               },
             ]}
           >
-            <Text style={[styles.primaryButtonText, { color: theme.primary }]}>
+            <Text style={[styles.primaryButtonText, { color: '#fff' }]}> 
               Log in
             </Text>
           </Pressable>
         </Animated.View>
       </Animated.View>
-    </LinearGradient>
+    </View>
   );
 }
 
